@@ -62,21 +62,21 @@ LOOP2:  CALL SCAN_NUM
     ; SORTING THEM ACCORDING TO MARKS USING BUBBLE SORT 
     DEC N             
     MOV CX, N                 
-OUTER:  MOV SI, 0       
+A:  MOV SI, 0       
 
-INNER:  MOV  AL, MARKS[SI]
+B:  MOV  AL, MARKS[SI]
     MOV  DL, ID[SI]
     INC  SI
     CMP  MARKS[SI], AL
-    JB   SKIP
+    JB   C
     XCHG AL, MARKS[SI]
     MOV  MARKS[SI-1], AL
     XCHG DL, ID[SI]
     MOV  ID[SI-1], DL  
 
-SKIP:   CMP  SI, CX
-    JL   INNER 
-    LOOP OUTER
+C:   CMP  SI, CX
+    JL   B
+    LOOP A
 
     INC N                   
 
